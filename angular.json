@@ -20,7 +20,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets","src/index.html",{"glob": "**","input": "node_modules/@kyma-project/luigi-core", "output": "/luigi-core"},{"glob": "**","input": "node_modules/@kyma-project/luigi-client","output": "/luigi-client"}
+              "src/assets","src/index.html",{"glob": "**","input": "node_modules/@kyma-project/luigi-core", "output": "/luigi-core"},{"glob": "**","input": "node_modules/@kyma-project/luigi-client","output": "/luigi-client"},{"glob": "**","input": "node_modules/fundamental-ui/dist", "output": "/fundamental-ui"}
             ],
             "styles": [
               "src/styles.css"
@@ -77,7 +77,21 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets","src/index.html",{"glob": "**","input": "node_modules/@kyma-project/luigi-core", "output": "/luigi-core"},{"glob": "**","input": "node_modules/@kyma-project/luigi-client","output": "/luigi-client"}
+              "src/assets","src/index.html",{
+                "glob": "**",
+                "input": "node_modules/@kyma-project/luigi-core",
+                "output": "/luigi-core"
+              },
+              {
+                "glob": "**",
+                "input": "node_modules/@kyma-project/luigi-client",
+                "output": "/luigi-client"
+              },
+              {
+                "glob": "**",
+                "input": "node_modules/fundamental-ui/dist",
+                "output": "/fundamental-ui"
+              }
             ]
           }
         },
