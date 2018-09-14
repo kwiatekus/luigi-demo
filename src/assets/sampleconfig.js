@@ -9,10 +9,38 @@ Luigi.setConfig({
             pathSegment: 'hw',
             label: 'Hello World!',
             viewUrl: '/assets/hello.html'
+          },
+          {
+            pathSegment: 'external',
+            label: 'External Modules',
+            children: [
+              {
+                pathSegment: 'vue',
+                label: 'Hello Vue!',
+                viewUrl: 'http://localhost:8080/list',
+                children: [{
+                    pathSegment: 'details',
+                    label: 'details',
+                    viewUrl: `http://localhost:8080/list/{nodeParams.name}`
+                  }
+                ],
+                context: {
+                  token : JSON.parse(localStorage.getItem('luigi.auth')).accessToken
+                }
+              },
+              {
+                pathSegment: 'sapui5',
+                label: 'Hello SAP UI 5!',
+                viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com'
+              }
+            ]
           }
         ]
       }
     ]
+  },
+  settings: {
+    // backdropDisabled : true
   },
   routing: {
     useHashRouting: true
