@@ -7,33 +7,28 @@ Luigi.setConfig({
         children: [
           {
             pathSegment: 'hw',
-            label: 'Hello World!',
+            label: 'Home',
             viewUrl: '/assets/hello.html'
           },
           {
-            pathSegment: 'external',
-            label: 'External Modules',
-            children: [
-              {
-                pathSegment: 'vue',
-                label: 'Hello Vue!',
-                viewUrl: 'http://localhost:8080/list',
-                children: [{
-                    pathSegment: 'details',
-                    label: 'details',
-                    viewUrl: `http://localhost:8080/list/{nodeParams.name}`
-                  }
-                ],
-                context: {
-                  token : JSON.parse(localStorage.getItem('luigi.auth')).accessToken
-                }
-              },
-              {
-                pathSegment: 'sapui5',
-                label: 'Hello SAP UI 5!',
-                viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com'
+            pathSegment: 'vue',
+            label: 'Product OverVue',
+            viewUrl: 'http://localhost:8080/list',
+            children: [{
+                pathSegment: 'details',
+                label: 'details',
+                viewUrl: `http://localhost:8080/list/{nodeParams.name}`
+                // hideFromNav: true,
               }
-            ]
+            ],
+            context: {
+              token : JSON.parse(localStorage.getItem('luigi.auth')).accessToken
+            }
+          },
+          {
+            pathSegment: 'sapui5',
+            label: 'Product Editor - SAP UI 5',
+            viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com/webapp/index.html?hc_reset'
           }
         ]
       }
