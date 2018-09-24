@@ -1,3 +1,17 @@
+
+var navNodesProviderFn = (context) => {
+  return new Promise(function (resolve) {
+    $.get( "https://navigation-node-srv.us-east.internal.yaas.io/api/navigation", function( data ) {
+      $.each( data, (index, node )=>{
+        node.context={
+          title : node.label
+        }
+      });
+      resolve(data);
+    });
+  });
+};
+
 Luigi.setConfig({
   navigation: {
     nodes: () => [
@@ -29,6 +43,11 @@ Luigi.setConfig({
             pathSegment: 'sapui5',
             label: 'Product Editor - SAP UI 5',
             viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com/webapp/index.html?hc_reset'
+          },
+          {
+            pathSegment: 'lazy',
+            label: 'Lazy Loaded',
+            children : navNodesProviderFn
           }
         ]
       }
