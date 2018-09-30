@@ -22,26 +22,26 @@ Luigi.setConfig({
           {
             pathSegment: 'hw',
             label: 'Home',
-            viewUrl: '/assets/hello.html'
-          },
-          {
-            pathSegment: 'vue',
-            label: 'Product OverVue',
-            viewUrl: 'http://localhost:8080/list',
-            children: [{
-                pathSegment: 'details',
-                label: 'details',
-                viewUrl: `http://localhost:8080/list/{nodeParams.name}`
-                // hideFromNav: true,
-              }
-            ],
+            viewUrl: '/assets/hello.html',
             context: {
               token : JSON.parse(localStorage.getItem('luigi.auth')).accessToken
             }
           },
           {
+            pathSegment: 'vue',
+            label: 'Tractor OverVue',
+            viewUrl: 'http://localhost:8080/list',
+            children: [{
+                pathSegment: ':id',
+                label: 'details',
+                viewUrl: 'http://localhost:8080/list/:id'
+                // hideFromNav: true,
+              }
+            ]
+          },
+          {
             pathSegment: 'sapui5',
-            label: 'Product Editor - SAP UI 5',
+            label: 'SAP Tractor Editor',
             viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com/webapp/index.html?hc_reset'
           },
           {
@@ -70,8 +70,8 @@ Luigi.setConfig({
       // automaticSilentRenew: true,
       loadUserInfo: false,
       logoutFn: (settings, authData, logoutCallback) => {
-        localStorage.clear();
-        window.location = "https://accounts.google.com/Logout"
+        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:4200/logout.html";
+        logoutCallback();
       },
       nonceFn: () => {
         var text = "";
