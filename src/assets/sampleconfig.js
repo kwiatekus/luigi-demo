@@ -42,7 +42,7 @@ Luigi.setConfig({
           {
             pathSegment: 'sapui5',
             label: 'SAP Tractor Editor',
-            viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com/webapp/index.html?hc_reset'
+            viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com'
           },
           {
             pathSegment: 'lazy',
