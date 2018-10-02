@@ -18,24 +18,26 @@ Luigi.setConfig({
       {
         pathSegment: 'home',
         label: 'Home',
+        context: {
+          profile : JSON.parse(localStorage.getItem('luigi.auth')).profile
+        },
         children: [
           {
             pathSegment: 'hw',
             label: 'Home',
             viewUrl: '/assets/hello.html',
-            context: {
-              token : JSON.parse(localStorage.getItem('luigi.auth')).accessToken
-            }
+            hideFromNav: true,
           },
           {
             pathSegment: 'vue',
             label: 'Tractor OverVue',
-            viewUrl: 'http://localhost:8080/list',
+            // viewUrl: 'http://localhost:8080',
+            viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io',
             children: [{
                 pathSegment: ':id',
                 label: 'details',
-                viewUrl: 'http://localhost:8080/list/:id'
-                // hideFromNav: true,
+                // viewUrl: 'http://localhost:8080/:id'
+                viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io/:id'
               }
             ]
           },
@@ -48,10 +50,24 @@ Luigi.setConfig({
             pathSegment: 'lazy',
             label: 'Lazy Loaded',
             children : navNodesProviderFn
+          },
+          {
+            pathSegment: 'admin',
+            label: 'Administration',
+            viewUrl: '/assets/admin.html'
           }
         ]
       }
-    ]
+    ],
+    nodeAccessibilityResolver:  (nodeToCheckPermissionFor, parentNode, currentContext) => {
+      const admins = [
+        'luigi.master1234@gmail.com'
+      ];
+      if(nodeToCheckPermissionFor.pathSegment === 'admin' && currentContext) {
+        return admins.includes(currentContext.profile.email)
+      }
+      return true;
+    }
   },
   settings: {
     // backdropDisabled : true
@@ -68,10 +84,11 @@ Luigi.setConfig({
         'openid email',
       // redirect_uri: 'http://console-dev.kyma.local:4200',
       // automaticSilentRenew: true,
-      loadUserInfo: false,
+      loadUserInfo: true,
       logoutFn: (settings, authData, logoutCallback) => {
-        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:4200/logout.html";
+        localStorage.clear();
         logoutCallback();
+        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:4200/logout.html";
       },
       nonceFn: () => {
         var text = "";
@@ -81,6 +98,11 @@ Luigi.setConfig({
           text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
+      }
+    },
+    events: {
+      onAuthSuccessful: data => {
+        console.log('onAuthSuccessfull', data)
       }
     }
   }
