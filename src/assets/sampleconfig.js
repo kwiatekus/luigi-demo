@@ -29,45 +29,48 @@ Luigi.setConfig({
             hideFromNav: true,
           },
           {
-            pathSegment: 'vue',
-            label: 'Tractor OverVue',
-            // viewUrl: 'http://localhost:8080',
-            viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io',
+            pathSegment: 'jetplanes',
+            label: 'Jet Planes'
+          },
+          {
+            pathSegment: 'submarines',
+            label: 'Submarines'
+          },
+          {
+            pathSegment: 'tractors',
+            label: 'Tractors',
             children: [{
-                pathSegment: ':id',
-                label: 'details',
-                // viewUrl: 'http://localhost:8080/:id'
-                viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io/:id'
-              }
-            ]
+              pathSegment: 'vue',
+              label: 'Tractor OverVue',
+              viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io',
+              children: [{
+                  pathSegment: ':id',
+                  label: 'details',
+                  viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io/:id'
+                }
+              ]
+            },
+            {
+              pathSegment: 'sapui5',
+              label: 'SAP Tractor Editor',
+              viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com'
+            }]
           },
           {
-            pathSegment: 'sapui5',
-            label: 'SAP Tractor Editor',
-            viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com'
+            pathSegment: 'helicopters',
+            label: 'Helicopters'
           },
           {
-            pathSegment: 'lazy',
-            label: 'Lazy Loaded',
-            children : navNodesProviderFn
-          },
-          {
-            pathSegment: 'admin',
-            label: 'Administration',
-            viewUrl: '/assets/admin.html'
+            pathSegment: 'baloons',
+            label: 'Hot Air Baloons'
           }
         ]
+      },
+      {
+        pathSegment: 'external',
+        label: 'Integrations',
       }
-    ],
-    nodeAccessibilityResolver:  (nodeToCheckPermissionFor, parentNode, currentContext) => {
-      const admins = [
-        'luigi.master1234@gmail.com'
-      ];
-      if(nodeToCheckPermissionFor.pathSegment === 'admin' && currentContext) {
-        return admins.includes(currentContext.profile.email)
-      }
-      return true;
-    }
+    ]
   },
   settings: {
     // backdropDisabled : true
