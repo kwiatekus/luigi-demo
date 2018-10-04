@@ -1,7 +1,7 @@
 
 var navNodesProviderFn = (context) => {
   return new Promise(function (resolve) {
-    $.get( "https://navigation-node-srv.us-east.internal.yaas.io/api/navigation", function( data ) {
+    $.get( "https://navigation-node-srv.us-east.stage.cf.yaas.io/api/navigation", function( data ) {
       $.each( data, (index, node )=>{
         node.context={
           title : node.label
@@ -73,7 +73,7 @@ Luigi.setConfig({
     // backdropDisabled : true
   },
   routing: {
-    useHashRouting: true
+    // useHashRouting: true
   },
   auth: {
     use: 'openIdConnect',
@@ -88,7 +88,7 @@ Luigi.setConfig({
       logoutFn: (settings, authData, logoutCallback) => {
         localStorage.clear();
         logoutCallback();
-        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:4200/logout.html";
+        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://tractors.us-east.stage.cf.yaas.io/logout.html";
       },
       nonceFn: () => {
         var text = "";
