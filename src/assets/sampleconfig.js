@@ -43,17 +43,14 @@ Luigi.setConfig({
               pathSegment: 'vue',
               label: 'Tractor OverVue',
               viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io',
+              // viewUrl: 'http://localhost:8080',
               children: [{
                   pathSegment: ':id',
-                  label: 'details',
+                  // label: 'details',
                   viewUrl: 'https://luigi-module-vue.us-east.stage.cf.yaas.io/:id'
+                  // viewUrl: 'http://localhost:8080/:id'
                 }
               ]
-            },
-            {
-              pathSegment: 'sapui5',
-              label: 'SAP Tractor Editor',
-              viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com'
             }]
           },
           {
@@ -63,6 +60,12 @@ Luigi.setConfig({
           {
             pathSegment: 'baloons',
             label: 'Hot Air Baloons'
+          },
+          {
+            pathSegment: 'sapui5',
+            label: 'SAP Tractor Editor',
+            viewUrl: 'https://luigidemosapui5-i303803trial.dispatcher.hanatrial.ondemand.com',
+            hideFromNav: true
           }
         ]
       },
