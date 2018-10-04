@@ -79,7 +79,7 @@ Luigi.setConfig({
     // backdropDisabled : true
   },
   routing: {
-    useHashRouting: true
+     useHashRouting: false
   },
   auth: {
     use: 'openIdConnect',
@@ -94,7 +94,7 @@ Luigi.setConfig({
       logoutFn: (settings, authData, logoutCallback) => {
         localStorage.clear();
         logoutCallback();
-        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:4200/logout.html";
+        window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://tractors-and-more.us-east.stage.cf.yaas.io/logout.html";
       },
       nonceFn: () => {
         var text = "";
