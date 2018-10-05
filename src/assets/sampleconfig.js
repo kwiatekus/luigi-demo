@@ -18,9 +18,6 @@ Luigi.setConfig({
       {
         pathSegment: 'home',
         label: 'Home',
-        context: {
-          profile : JSON.parse(localStorage.getItem('luigi.auth')).profile
-        },
         children: [
           {
             pathSegment: 'hw',
