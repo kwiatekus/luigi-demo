@@ -82,7 +82,7 @@ Luigi.setConfig({
      useHashRouting: false
   },
   auth: {
-    use: 'openIdConnect',
+    use: '',
     openIdConnect: {
       authority: 'https://accounts.google.com',
       client_id: '478154255287-8kr86s42k0kqjsmb427j3sq45ed2cl1p.apps.googleusercontent.com',

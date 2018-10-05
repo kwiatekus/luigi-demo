@@ -19,7 +19,7 @@
 		<div class="fd-page__content">
       <section class="fd-section">
           <h1 class="fd-has-text-align-center fd-has-font-style-italic">
-              <p>Hello <span id="putNameHere"></span>.</p>
+              <!-- <p>Hello <span id="putNameHere"></span>.</p> -->
               <p>Welcome in another (Luigi powered) app.</p>
               <p>This one is not all about tractors.</p>
           </h1>
@@ -32,7 +32,7 @@
 (function() {
     LuigiClient.addInitListener((data)=>{
 
-        document.getElementById("putNemHere").innerText = data.profile.name ? data.profile.name : data.profile.email;
+        // document.getElementById("putNemHere").innerText = data.profile.name ? data.profile.name : data.profile.email;
     });
 })();
 </script>
